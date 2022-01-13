@@ -10,17 +10,18 @@
 
 .main_content{
   user-select: none; /* CSS3 */
-  -moz-user-select: none; <!-- Firefox -->
-  -ms-user-select: none;  <!-- Internet Explorer -->
-  -khtml-user-select: none; <!-- KHTML browsers (e.g. Konqueror) -->
-  -webkit-user-select: none; <!-- Chrome, Safari, and Opera -->
-  -webkit-touch-callout: none; <!-- Disable Android and iOS callouts -->
+  -moz-user-select: none; /* Firefox */
+  -ms-user-select: none;  /* Internet Explorer */
+  -khtml-user-select: none; /* KHTML browsers (e.g. Konqueror) */
+  -webkit-user-select: none; /* Chrome, Safari, and Opera */
+  -webkit-touch-callout: none; /* Disable Android and iOS callouts */
 
 }
 
 .application_area{
 	width:1550px;
 	height:auto;
+	/* height:580px; */
 	margin : 10px 0px 0px 10px;
 	position:absolute;
 }
@@ -33,10 +34,10 @@
   display: none;
 }
 
-.application_area input[type="radio"] + label:hover,
-#option input[type="radio"] + label:hover{
+/* .application_area input[type="radio"] + label:hover, */
+/* #option input[type="radio"] + label:hover{
 	background-color: #E2EDF9; 	/* マウスオーバー時の背景色を指定する */
-}
+/* } */ 
 
 .application_area input[type=text]:hover {
   border-color: #0171bd;	/* ボックスの境界線を実線で指定する */
@@ -197,10 +198,13 @@ top_contents
 svg描画領域
 ***************/
 #draw_include{
-  width:1039.5px;
-  height:735px;
+  /* width:1039.5px;
+  height:735px; */
+  width:700px;
+  height:490px;
   float:left;
-  border:#00f 3px solid;
+  border:#868686 1.5px solid;
+  /* border:rgb(255, 255, 255) 1.5px solid; */
   overflow:hidden;
 }
 
@@ -297,7 +301,7 @@ right toolbar
 #table_stamp th,
 #table_layer th,
 #table_select_fill th{
-	background-color : #ccff00;
+	background-color : #00d9ff;
 	cursor: pointer;
 	font-weight: normal;
 }
@@ -544,7 +548,7 @@ right toolbar
 /***********************************
 選択状態ボックス変更テキストボックス
 ************************************/
-#span_resizeBox{
+/* #span_resizeBox{
 	border: 2px solid green;
 	padding: 20px;
 }
@@ -557,11 +561,13 @@ right toolbar
   height:30px;
   text-align: center;
 	font-size : 100%;
-}
+} */
 
 #scrollbar_width{ /* css */
-  margin :0px 0px 0px 170px;
-  width:1040px;
+  /* margin :0px 0px 0px 170px; */
+  margin :0px 0px 0px 0px;
+  /* width:1040px; */
+  width:700px;
   height:12px;
 	clear:both;
 }
@@ -569,7 +575,8 @@ right toolbar
 #scrollbar_height{ /* css */
   margin-left:10px;
   width:12px;
-  height:735px;
+  /* height:735px; */
+  height:500;
   float:left;
 }
 
