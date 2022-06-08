@@ -6,7 +6,7 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
   <meta name="description" content="a javascript port of potrace" />
   <meta name="keywords" content="potrace,trace,vectorization,svg" />
-  <title>svgファイル変換システム</title>
+  <title>PNG/JPEG→SVG変換ツール</title>
 </head>
 
 <body>
@@ -16,21 +16,20 @@
 
   <link rel="stylesheet" href="pngtosvg.css">
 
-  <h1>SVGファイル変換システム</h1>
+  <h1>PNG/JPEG→SVG変換ツール</h1>
 
   <br>
-  <p>このシステムではPNGファイルやJPEGファイルなどを<br>
-    立体コピー触地図作成支援Webアプリで編集可能な<br>
-    SVGファイルへ変換することができます。</p>
+  <p>このシステムではPNGファイルやJPEGファイルなどラスター画像を<br>
+    SVGファイルへ変換します。</p>
 
   <br>
-  <p>1. PNG/JPEGファイルをSVGファイルへ変換します。</p>
+  <p>1. PNG/JPEGファイルの選択</p>
 
   <input type="file" id="imageInput" accept="image/*">
   <input type="button" value="画像ファイル選択" onClick="$('#imageInput').click();">
 
   <br>
-  <div id="imgdiv"> </div>
+  <div id="imgdiv"></div>
   <div> </div>
   <div id="svgdiv"> </div>
 
@@ -41,8 +40,7 @@
   </div>
 
   <br>
-  <p>2. 1で作成したSVGファイルを立体コピー触地図作成支援Webアプリで<br>
-    　 編集可能な形式に変換します。まずは用紙の向きを選択してください。</p>
+  <p>2. 用紙の向きを選択</p>
 
   <br>
   <input type="radio" id="horizontal" name="direction" />
@@ -52,7 +50,7 @@
 
   <br>
   <br>
-  <p>3. 用紙のサイズを選択してください。</p>
+  <p>3. 用紙のサイズを選択</p>
 
   <br>
   <input type="radio" id="size_A4" name="size" />
@@ -64,13 +62,11 @@
   <br>
 
   <br>
-  <p>4. 2と3で選択したサイズで立体コピー触地図作成支援Webアプリで<br>
-    　 編集可能な形式に変換します。下のボックスの中には返還後の<br>
-    　 SVGファイルの内容が表示されます。</p>
+  <p>4. TM-Draw で編集可能な形式に変換</p>
 
   <form name="myForm">
     <input name="myFile" type="file" /><br />
-    <textarea name="output" cols="80" rows="10"></textarea>
+    <!-- <textarea name="output" cols="80" rows="10"></textarea> -->
   </form>
 
   <script type="text/javascript" src="potrace.js"></script>

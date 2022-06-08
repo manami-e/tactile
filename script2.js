@@ -38,7 +38,7 @@ form.myFile.addEventListener('change', function (e) {
 
         if ($('input[name="direction"]:checked').attr('id') === 'horizontal') {
             if ($('input[name="size"]:checked').attr('id') === 'size_A4') {
-                var text = '<svg id="svg_draw_area" width="1039.5" height="735" xmlns="http://www.w3.org/2000/svg" version="1.1" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:svgjs="http://svgjs.com/svgjs" viewBox="0 0 1500 1500">\n';
+                var text = '<svg id="svg_draw_area" width="1039.5" height="735" xmlns="http://www.w3.org/2000/svg" version="1.1" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:svgjs="http://svgjs.com/svgjs" viewBox="-1500 -1500 3000 3000">\n';
                 var width = 1039.5;
                 var height = 735;
             }
@@ -87,6 +87,7 @@ form.myFile.addEventListener('change', function (e) {
             var trans_y = size_height / reduce / 2;
         } else {
             while (size_height >= height) {
+                seize_height = Number(f10[12]);
                 reduce += 0.2;
                 size_height = size_height / reduce;;
                 console.log(reduce);
@@ -164,7 +165,7 @@ form.myFile.addEventListener('change', function (e) {
 
         var text3 = text + '\n' + String(text2) + ' ' + String(id_text3) + '\n' + '</svg>';
         var text4 = text3.replace(/,/g, '');
-        form.output.textContent = text4;
+        // form.output.textContent = text4;
 
         let str = text4;
         let ary = str.split(''); // 配列形式に変換（後述のBlobで全要素出力）

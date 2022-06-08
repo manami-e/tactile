@@ -88,13 +88,13 @@
             <br>
             <br>
             <div>
-                幅：<input type="text" id="textbox_selectBox_width" value="" oncopy="return false" onpaste="return false"
-                    oncontextmenu="return false" maxlength="6" style="width:80px;">mm
+                幅：<input type="text" id="textbox_selectBox_width" value="" oncopy="false" onpaste="false"
+                    oncontextmenu="false" maxlength="6" style="width:80px;">mm
             </div>
             <br>
             <div>
-                高さ：<input type="text" id="textbox_selectBox_height" value="" oncopy="return false"
-                    onpaste="return false" oncontextmenu="return false" maxlength="6" style="width:80px;">mm
+                高さ：<input type="text" id="textbox_selectBox_height" value="" oncopy="false" onpaste="false"
+                    oncontextmenu="false" maxlength="6" style="width:80px;">mm
             </div>
             <br>
             <div>
@@ -184,7 +184,7 @@
                                             </span>
                                             <div class="box">
                                                 <p class="text">直線を描く
-                                                <p class="text1">直線を描画できます</p>
+                                                <p class="text1">ダブルクリックで描画を終了できます</p>
                                                 </p>
                                             </div>
                                         </button>
@@ -238,8 +238,8 @@
 
                                 <div class="group">
                                     <button class="ribbon-button">
-                                        <input type="text" id="textbox_strokewidth" oncopy="return false"
-                                            onpaste="return false" oncontextmenu="return false">mm　
+                                        <input type="text" id="textbox_strokewidth" oncopy="false" onpaste="false"
+                                            oncontextmenu="false">mm　
                                         <button id="button_reset_strokewidth">Reset</button>
                                     </button>
                                     <span class="title">線の太さ</span>
@@ -505,9 +505,9 @@
                                                 <input type="checkbox" id="check_ink" name="checkers"
                                                     value="check_ink" />
                                                 <label for="check_ink" class="custom_check_label"></label>
-                                                <input type="text" id="InkChar" oncopy="return false" value="墨字"
-                                                    placeholder="墨字が入力できます" onpaste="return false"
-                                                    oncontextmenu="return false" style="width:130px;">
+                                                <input type="text" id="InkChar" oncopy="false" value="墨字"
+                                                    placeholder="墨字が入力できます" onpaste="false" oncontextmenu="false"
+                                                    style="width:130px;">
                                             </td>
                                         </tr>
                                     </button>
@@ -517,9 +517,9 @@
                                                 <input type="checkbox" id="check_bra" name="checkers"
                                                     value="check_bra" />
                                                 <label for="check_bra" class="custom_check_label"></label>
-                                                <input type="text" id="Braille" oncopy="return false" value="てんじ"
-                                                    placeholder="てんじが入力できます" onpaste="return false"
-                                                    oncontextmenu="return false" style="width:130px;">
+                                                <input type="text" id="Braille" oncopy="false" value="てんじ"
+                                                    placeholder="てんじが入力できます" onpaste="false" oncontextmenu="false"
+                                                    style="width:130px;">
                                             </td>
                                         </tr>
                                     </button>
@@ -657,12 +657,12 @@
                     <table id="table_stroke_option">
                         <th class="dotted_option" colspan="4">線の属性</th>
                         <tr class="dotted_option">
-                            <td colspan="4">線部分の長さ　<input type="text" id="dottedLine_line" oncopy="return false"
-                                    onpaste="return false" oncontextmenu="return false">mm</td>
+                            <td colspan="4">線部分の長さ　<input type="text" id="dottedLine_line" oncopy="false"
+                                    onpaste="false" oncontextmenu="false">mm</td>
                         </tr>
                         <tr class="dotted_option">
-                            <td colspan="4">線間距離　<input type="text" id="dottedLine_space" oncopy="return false"
-                                    onpaste="return false" oncontextmenu="return false">mm</td>
+                            <td colspan="4">線間距離　<input type="text" id="dottedLine_space" oncopy="false" onpaste="false"
+                                    oncontextmenu="false">mm</td>
                         </tr>
                     </table>
 
@@ -670,16 +670,16 @@
                         <th colspan="4" class="gadget_resizeInk gadget_resize_braille">文字の属性</th>
                         <tr class="gadget_resizeInk">
                             <td colspan="4">
-                                墨字　<input type="text" id="textbox_resize_ink" oncopy="return false"
-                                    onpaste="return false" oncontextmenu="return false">
+                                墨字　<input type="text" id="textbox_resize_ink" oncopy="false" onpaste="false"
+                                    oncontextmenu="false">
                                 pt　<button id="button_reset_ink">Reset</button>
                             </td>
                         </tr>
 
                         <tr class="gadget_resize_braille">
                             <td colspan="4">
-                                点字　<input type="text" id="textbox_resize_braille" oncopy="return false"
-                                    onpaste="return false" oncontextmenu="return false">
+                                点字　<input type="text" id="textbox_resize_braille" oncopy="false" onpaste="false"
+                                    oncontextmenu="false">
                                 pt　<button id="button_reset_braille">Reset</button>
                             </td>
                         </tr>
@@ -688,13 +688,13 @@
                             <td colspan="2" align="center">内容</td>
                             <td colspan="2">
                                 <input type="text" id="textbox_text_info" style="width:120px; height:30px;"
-                                    oncopy="return false" onpaste="return false" oncontextmenu="return false">
+                                    oncopy="false" onpaste="false" oncontextmenu="false">
                             </td>
                         </tr>
                         <tr class="gadget_imageOpacity">
                             <td>画像<br>透過度</td>
-                            <td><input type="text" id="textbox_image_opacity" oncopy="return false"
-                                    onpaste="return false" oncontextmenu="return false"></td>
+                            <td><input type="text" id="textbox_image_opacity" oncopy="false" onpaste="false"
+                                    oncontextmenu="false"></td>
                             <td>%</td>
                             <td><button id="button_reset_image_opacity">100%</button></td>
                         </tr>
@@ -722,7 +722,16 @@
                             <td colspan="2"><button id="button_polkadot_water"
                                     value='url(#polkadot_water-texture)'></button>
                             </td>
-                            <td colspan="2"><button id="button_polkadot" value='url(#polkadot-texture)'></button></td>
+                            <td colspan="2"><button id="button_polkadot_05" value='url(#polkadot-texture_05)'></button>
+                            </td>
+                            <td colspan="2"><button id="button_polkadot_08" value='url(#polkadot-texture_08)'></button>
+                            </td>
+                            <td colspan="2"><button id="button_polkadot_4_05"
+                                    value='url(#polkadot-texture_4_05)'></button>
+                            </td>
+                            <td colspan="2"><button id="button_polkadot_4_08"
+                                    value='url(#polkadot-texture_4_08)'></button>
+                            </td>
                         </tr>
                         <tr>
                             <td colspan="2"><button id="button_verticalLine"
@@ -742,6 +751,23 @@
                             <td colspan="2"><button id="button_stairLine" value='url(#stairLine-texture)'></button></td>
                             <td colspan="2"><button id="button_gray" value='#333'></button></td>
                         </tr>
+
+                        <!-- <tr>
+                            <form name="test">
+                                <div>
+                                    横の間隔：<input type="text" value="2" id="Text1" class="textBox" />mm
+                                </div>
+                                <div>
+                                    縦の間隔：<input type="text" value="2" id="Text2" class="textBox" />mm
+                                </div>
+                                <div>
+                                    <input id="Button1" type="button" value="button1" />
+                                    <input id="Button2" type="button" value="button2" />
+                                </div>
+                                <div id="output1"></div>
+                                <div id="output2"></div>
+                            </form>
+                        </tr> -->
                     </table>
 
                     <table id="table_layer">
@@ -770,9 +796,10 @@
                                 <label for="draw_fill_none" style="text-align: center;">なし</label>
                             </td>
                             <td colspan="2">
-                                <input type="radio" id="draw_fill_custom" name="draw_path_fillRadio" value="custom" />
+                                <input type="radio" id="draw_fill_custom" name="draw_path_fillRadio" value="custom"
+                                    list />
                                 <label for="draw_fill_custom">選んだ色</label><br>
-                                <input type="color" id="draw_fill_color" name="draw_fillcolor" value="#FF0000">
+                                <input type="color" id="draw_fill_color" name="draw_fillcolor" value="#FF0000" list>
                             </td>
                         </tr>
                         <tr class="table_draw_fill">
@@ -794,9 +821,28 @@
                                 <label for="draw_fill_polkadot_water"></label>
                             </td>
                             <td colspan="2">
-                                <input type="radio" id="draw_fill_polkadot" name="draw_path_fillRadio"
-                                    value="url(#polkadot-texture)" />
-                                <label for="draw_fill_polkadot"></label>
+                                <input type="radio" id="draw_fill_polkadot_05" name="draw_path_fillRadio"
+                                    value="url(#polkadot-texture_05)" />
+                                <label for="draw_fill_polkadot_05"></label>
+                            </td>
+                        </tr>
+                        <tr class="table_draw_fill">
+                            <td colspan="2">
+                                <input type="radio" id="draw_fill_polkadot_08" name="draw_path_fillRadio"
+                                    value="url(#polkadot-texture_08)" />
+                                <label for="draw_fill_polkadot_08"></label>
+                            </td>
+                            <td colspan="2">
+                                <input type="radio" id="draw_fill_polkadot_4_05" name="draw_path_fillRadio"
+                                    value="url(#polkadot-texture_4_05)" />
+                                <label for="draw_fill_polkadot_4_05"></label>
+                            </td>
+                        </tr>
+                        <tr class="table_draw_fill">
+                            <td colspan="2">
+                                <input type="radio" id="draw_fill_polkadot_4_08" name="draw_path_fillRadio"
+                                    value="url(#polkadot-texture_4_08)" />
+                                <label for="draw_fill_polkadot_4_08"></label>
                             </td>
                         </tr>
                         <tr class="table_draw_fill">
@@ -869,6 +915,8 @@
     <!-- 江口jsファイル -->
     <script type="text/javascript" src="./My_js/section_hide.js"></script>
     <!--リボンの表示非表示切り替え-->
+    <script type="text/javascript" src="./My_js/Mizutama.js"></script>
+    <!--水玉部分-->
 
     <script src="https://cdn.metroui.org.ua/v4/js/metro.min.js"></script>
 </body>

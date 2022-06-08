@@ -1,13 +1,14 @@
 body {
     margin: 30px;
     background-color: #ffffff;
+    width : 1350px;
 }
 
 h1 {
-    font-weight: bold;
-    font-size: 2.5em;
-    text-transform: capitalize;
-    letter-spacing: 0.1em;
+    padding: 0.5em;/*文字周りの余白*/
+  color: #494949;/*文字色*/
+  background: #fffaf4;/*背景色*/
+  border-left: solid 5px #ffaf58;/*左線（実線 太さ 色）*/
 }
 
 a:link,

@@ -657,6 +657,7 @@ function undo() {
     draw_gridline(3000, 3000, 75, 75);
     //defs（塗りつぶし機能に使う）の設定
     defs_set();
+    // defs_set2();
     checkBox_change();
     toConnect();
     edit_clear();
@@ -686,6 +687,7 @@ function redo() {
 
     draw_gridline(3000, 3000, 75, 75);
     defs_set();
+    // defs_set2();
     checkBox_change();
     toConnect();
     edit_clear();
@@ -815,40 +817,155 @@ function defs_set() {
     'id': 'diagonal-texture'
   }).addClass('pattern');
 
+  // let diagonal_pattern = draw.pattern(3.4 * SVG_RATIO, 3.4 * SVG_RATIO, function (add) {
+  //   add.rect(3.4 * SVG_RATIO, 3.4 * SVG_RATIO).attr({
+  //     'fill': '#fff'
+  //   })
+  //   add.line(6.1 * SVG_RATIO, -1.27 * SVG_RATIO, -1.5 * SVG_RATIO, 7.3 * SVG_RATIO).attr({
+  //     'stroke': '#000000',
+  //     'stroke-width': 0.5 * SVG_RATIO
+  //   })
+  //   add.line(3.0 * SVG_RATIO, -1.27 * SVG_RATIO, -1.5 * SVG_RATIO, 3.54 * SVG_RATIO).attr({
+  //     'stroke': '#000000',
+  //     'stroke-width': 0.5 * SVG_RATIO
+  //   })
+  // })
+  // diagonal_pattern.attr({
+  //   'id': 'diagonal-texture'
+  // }).addClass('pattern');
+
+  // var yoko = Number(document.getElementById("textbox_dot_yoko").value);
+  // var tate = Number(document.getElementById("textbox_dot_tate").value);
+  // textbox_dot_yoko.addEventListener("change", changeText);
+  // textbox_dot_tate.addEventListener("change", changeText);
+
+  // function changeText() {
+  //   yoko = Number(document.getElementById("textbox_dot_yoko").value);
+  //   tate = Number(document.getElementById("textbox_dot_tate").value);
 
   //水玉模様（白色）
-  let polkadot_pattern = draw.pattern(10 * SVG_RATIO, 10 * SVG_RATIO, function (add) {
-    add.rect(10 * SVG_RATIO, 10 * SVG_RATIO).attr({
+  // // let polkadot_pattern = draw.pattern(10 * SVG_RATIO, 10 * SVG_RATIO, function (add) {
+  // let polkadot_pattern = draw.pattern(2 * SVG_RATIO, 2 * SVG_RATIO, function (add) {
+  //   // add.rect(10 * SVG_RATIO, 10 * SVG_RATIO).attr({
+  //   //   'fill': '#fff'
+  //   // })
+  //   add.rect(2 * SVG_RATIO, 2 * SVG_RATIO).attr({
+  //     'fill': '#fff'
+  //   })
+  //   // add.circle(2 * SVG_RATIO).attr({
+  //   //   'cx': 1.25 * SVG_RATIO,
+  //   //   'cy': 1.25 * SVG_RATIO,
+  //   //   'fill': '#000'
+  //   // })
+  //   // add.circle(2 * SVG_RATIO).attr({
+  //   //   'cx': 6.25 * SVG_RATIO,
+  //   //   'cy': 6.25 * SVG_RATIO,
+  //   //   'fill': '#000'
+  //   // })
+  //   add.circle(0.5 * SVG_RATIO).attr({
+  //     'cx': 1 * SVG_RATIO,
+  //     'cy': 1 * SVG_RATIO,
+  //     'fill': '#000'
+  //   })
+  //   // add.circle(0.5 * SVG_RATIO).attr({
+  //   //   'cx': 1 * SVG_RATIO,
+  //   //   'cy': 1 * SVG_RATIO,
+  //   //   'fill': '#000'
+  //   // })
+  // })
+  // polkadot_pattern.attr({
+  //   'id': 'polkadot-texture'
+  // }).addClass('pattern')
+  // // }
+
+  let polkadot_pattern_05 = draw.pattern(2 * SVG_RATIO, 2 * SVG_RATIO, function (add) {
+    // console.log("OK");
+    add.rect(2 * SVG_RATIO, 2 * SVG_RATIO).attr({
       'fill': '#fff'
     })
-    add.circle(2 * SVG_RATIO).attr({
-      'cx': 1.25 * SVG_RATIO,
-      'cy': 1.25 * SVG_RATIO,
-      'fill': '#000'
-    })
-    add.circle(2 * SVG_RATIO).attr({
-      'cx': 6.25 * SVG_RATIO,
-      'cy': 6.25 * SVG_RATIO,
+    add.circle(0.5 * SVG_RATIO).attr({
+      'cx': 1 * SVG_RATIO,
+      'cy': 1 * SVG_RATIO,
       'fill': '#000'
     })
   })
-  polkadot_pattern.attr({
-    'id': 'polkadot-texture'
+  polkadot_pattern_05.attr({
+    'id': 'polkadot-texture_05'
+  }).addClass('pattern')
+
+  let polkadot_pattern_08 = draw.pattern(2 * SVG_RATIO, 2 * SVG_RATIO, function (add) {
+    add.rect(2 * SVG_RATIO, 2 * SVG_RATIO).attr({
+      'fill': '#fff'
+    })
+    add.circle(0.8 * SVG_RATIO).attr({
+      'cx': 1 * SVG_RATIO,
+      'cy': 1 * SVG_RATIO,
+      'fill': '#000'
+    })
+  })
+  polkadot_pattern_08.attr({
+    'id': 'polkadot-texture_08'
+  }).addClass('pattern')
+
+  let polkadot_pattern_4_05 = draw.pattern(4 * SVG_RATIO, 4 * SVG_RATIO, function (add) {
+    add.rect(4 * SVG_RATIO, 4 * SVG_RATIO).attr({
+      'fill': '#fff'
+    })
+    add.circle(0.5 * SVG_RATIO).attr({
+      'cx': 1 * SVG_RATIO,
+      'cy': 1 * SVG_RATIO,
+      'fill': '#000'
+    })
+  })
+  polkadot_pattern_4_05.attr({
+    'id': 'polkadot-texture_4_05'
+  }).addClass('pattern')
+
+  let polkadot_pattern_4_08 = draw.pattern(4 * SVG_RATIO, 4 * SVG_RATIO, function (add) {
+    add.rect(4 * SVG_RATIO, 4 * SVG_RATIO).attr({
+      'fill': '#fff'
+    })
+    add.circle(0.8 * SVG_RATIO).attr({
+      'cx': 1 * SVG_RATIO,
+      'cy': 1 * SVG_RATIO,
+      'fill': '#000'
+    })
+  })
+  polkadot_pattern_4_08.attr({
+    'id': 'polkadot-texture_4_08'
   }).addClass('pattern')
 
   //水玉模様（背景青色）
-  let polkadot_water_pattern = draw.pattern(10 * SVG_RATIO, 10 * SVG_RATIO, function (add) {
-    add.rect(10 * SVG_RATIO, 10 * SVG_RATIO).attr({
+  // let polkadot_water_pattern = draw.pattern(10 * SVG_RATIO, 10 * SVG_RATIO, function (add) {
+  //   add.rect(10 * SVG_RATIO, 10 * SVG_RATIO).attr({
+  //     'fill': '#1E90FF'
+  //   })
+  //   add.circle(2 * SVG_RATIO).attr({
+  //     'cx': 1.25 * SVG_RATIO,
+  //     'cy': 1.25 * SVG_RATIO,
+  //     'fill': '#000'
+  //   })
+  //   add.circle(2 * SVG_RATIO).attr({
+  //     'cx': 6.25 * SVG_RATIO,
+  //     'cy': 6.25 * SVG_RATIO,
+  //     'fill': '#000'
+  //   })
+  // })
+  // polkadot_water_pattern.attr({
+  //   'id': 'polkadot_water-texture'
+  // }).addClass('pattern')
+  let polkadot_water_pattern = draw.pattern(3 * SVG_RATIO, 3 * SVG_RATIO, function (add) {
+    add.rect(3 * SVG_RATIO, 3 * SVG_RATIO).attr({
       'fill': '#1E90FF'
     })
-    add.circle(2 * SVG_RATIO).attr({
+    add.circle(1 * SVG_RATIO).attr({
       'cx': 1.25 * SVG_RATIO,
       'cy': 1.25 * SVG_RATIO,
       'fill': '#000'
     })
-    add.circle(2 * SVG_RATIO).attr({
-      'cx': 6.25 * SVG_RATIO,
-      'cy': 6.25 * SVG_RATIO,
+    add.circle(1 * SVG_RATIO).attr({
+      'cx': 1.25 * SVG_RATIO,
+      'cy': 1.25 * SVG_RATIO,
       'fill': '#000'
     })
   })

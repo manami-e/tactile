@@ -173,6 +173,7 @@ function continue_setSVG(input_draw, vx, vy, vwidth, vheight) { //svgデータ�
   draw.viewbox(vx, vy, vwidth, vheight);
   draw.svg(input_draw);
   defs_set();
+  // defs_set2();
   set_zoom();
   set_handle(); //選択モードで使うハンドルの描画
   draw_gridline(3000, 3000, 75, 75); //グリッド線の描画
