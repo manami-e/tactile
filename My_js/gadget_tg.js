@@ -880,9 +880,9 @@ function defs_set() {
 
   let polkadot_pattern_05 = draw.pattern(2 * SVG_RATIO, 2 * SVG_RATIO, function (add) {
     // console.log("OK");
-    add.rect(2 * SVG_RATIO, 2 * SVG_RATIO).attr({
-      'fill': '#fff'
-    })
+    // add.rect(2 * SVG_RATIO, 2 * SVG_RATIO).attr({
+    //   'fill': '#fff'
+    // })
     add.circle(0.5 * SVG_RATIO).attr({
       'cx': 1 * SVG_RATIO,
       'cy': 1 * SVG_RATIO,
@@ -894,9 +894,9 @@ function defs_set() {
   }).addClass('pattern')
 
   let polkadot_pattern_08 = draw.pattern(2 * SVG_RATIO, 2 * SVG_RATIO, function (add) {
-    add.rect(2 * SVG_RATIO, 2 * SVG_RATIO).attr({
-      'fill': '#fff'
-    })
+    // add.rect(2 * SVG_RATIO, 2 * SVG_RATIO).attr({
+    //   'fill': '#fff'
+    // })
     add.circle(0.8 * SVG_RATIO).attr({
       'cx': 1 * SVG_RATIO,
       'cy': 1 * SVG_RATIO,
@@ -908,9 +908,9 @@ function defs_set() {
   }).addClass('pattern')
 
   let polkadot_pattern_4_05 = draw.pattern(4 * SVG_RATIO, 4 * SVG_RATIO, function (add) {
-    add.rect(4 * SVG_RATIO, 4 * SVG_RATIO).attr({
-      'fill': '#fff'
-    })
+    // add.rect(4 * SVG_RATIO, 4 * SVG_RATIO).attr({
+    //   'fill': '#fff'
+    // })
     add.circle(0.5 * SVG_RATIO).attr({
       'cx': 1 * SVG_RATIO,
       'cy': 1 * SVG_RATIO,
@@ -922,9 +922,9 @@ function defs_set() {
   }).addClass('pattern')
 
   let polkadot_pattern_4_08 = draw.pattern(4 * SVG_RATIO, 4 * SVG_RATIO, function (add) {
-    add.rect(4 * SVG_RATIO, 4 * SVG_RATIO).attr({
-      'fill': '#fff'
-    })
+    // add.rect(4 * SVG_RATIO, 4 * SVG_RATIO).attr({
+    //   'fill': '#fff'
+    // })
     add.circle(0.8 * SVG_RATIO).attr({
       'cx': 1 * SVG_RATIO,
       'cy': 1 * SVG_RATIO,

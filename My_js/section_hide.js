@@ -5,7 +5,7 @@ let showBtn = document.getElementById('btn-max');
 //表示・非表示を切り替える要素を取得
 let section1 = document.getElementById('section_draw');
 let section2 = document.getElementById('section_stamp');
-let section3 = document.getElementById('section_brail');
+let section3 = document.getElementById('section_braille');
 let section4 = document.getElementById('section_setting');
 let section5 = document.getElementById('section_layer');
 
