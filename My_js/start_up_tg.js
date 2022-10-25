@@ -109,7 +109,7 @@ $(window).on('load', function () {
 
   //3.2 描画領域の初期設定
   // continue_setSVG('', -DRAW_AREA_WIDTH, -DRAW_AREA_HEIGHT, DRAW_AREA_WIDTH * 2, DRAW_AREA_HEIGHT * 2);
-  continue_setSVG('', -DRAW_AREA_WIDTH + 200, -DRAW_AREA_HEIGHT + 200, DRAW_AREA_WIDTH * 2.5, DRAW_AREA_HEIGHT * 2.5);
+  continue_setSVG('', -DRAW_AREA_WIDTH + 100, -DRAW_AREA_HEIGHT + 250, DRAW_AREA_WIDTH * 2, DRAW_AREA_HEIGHT * 2);
 
   // //3.3 描画領域の表示範囲を調整する左右スクロールスライダー(SVGで描画)の設定
   // let width_scrollbar = SVG('scrollbar_width').size(1040, 10).attr('id', 'width_scrollbar');
@@ -150,17 +150,17 @@ $(window).on('load', function () {
   // })
 
   //3.3 描画領域の表示範囲を調整する左右スクロールスライダー(SVGで描画)の設定
-  let width_scrollbar = SVG('scrollbar_width').size(700, 10).attr('id', 'width_scrollbar');
-  width_scrollbar.rect(700, 10).stroke('#868686').fill('#ffffff'); //スライダーの大枠を描画
+  let width_scrollbar = SVG('scrollbar_width').size(1000, 10).attr('id', 'width_scrollbar');
+  width_scrollbar.rect(1000, 10).stroke('#868686').fill('#ffffff'); //スライダーの大枠を描画
   let width_handle = width_scrollbar.rect(100, 10).attr({ //操作ハンドル（水色の四角形）を描画
-    'x': 300, // ( 700 - 100 )/2 = 300
+    'x': 450, // ( 700 - 100 )/2 = 300
     'id': 'width_handle',
     'fill': '#868686',
     'cursor': 'pointer'
   })
-  width_handle.draggable({ minX: 0, minY: 0, maxX: 700, maxY: 10 }); //指定した範囲でドラッグ可能にする svg.draggable.jsを利用
+  width_handle.draggable({ minX: 0, minY: 0, maxX: 1000, maxY: 10 }); //指定した範囲でドラッグ可能にする svg.draggable.jsを利用
   widthScrollBar_ratio = (4000 - draw.viewbox().width) / 940;
-  widthScrollBar_center = widthScrollBar_ratio * 300;
+  widthScrollBar_center = widthScrollBar_ratio * 450;
   width_handle.on('dragmove.namespace', function (event) { //ドラッグして、移動している間、動き続ける処理
     let viewbox = draw.viewbox();
     let new_viewbox_x = widthScrollBar_ratio * Number(this.attr('x')) - widthScrollBar_center + viewbox_x;

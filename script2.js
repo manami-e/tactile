@@ -22,8 +22,8 @@ form.myFile.addEventListener('change', function (e) {
         var f8 = f5.replace(/M/g, 'M ');
         var f9 = f8.replace(/=/g, ' = ');
         var f6 = f9.split(/\n/);
-        var f7 = f6[1].split(/\s/);
-        var f10 = f6[0].split(/\s/);
+        var f7 = f6[1].split(/\s/); //本文を空白で分割
+        var f10 = f6[0].split(/\s/); //ヘッダーを空白で分割
 
         console.log(f10[9]);
         console.log(f10[12]);
