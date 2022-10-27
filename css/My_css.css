@@ -41,8 +41,11 @@
 
 .menu {
 	width: 100%;
-	height: 100%;
 }
+
+/* .window-content_p-2s {
+	float: left;
+} */
 
 /* .example {
 	position: relative;
@@ -281,7 +284,7 @@ svg描画領域
 	/* width:1039.5px;
   height:735px; */
 	width: 1000px;
-	height: 490px;
+	height: 580px;
 	float: left;
 	border: #868686 1.5px solid;
 	/* border:rgb(255, 255, 255) 1.5px solid; */
@@ -292,8 +295,8 @@ svg描画領域
 right toolbar
 **************************/
 .toolbar_right {
-	float: right;
-	margin: -500px 30px 0px 30px;
+	float: left;
+	margin: -580px 30px 0px 30px;
 }
 
 #table_undo_redo button {
@@ -624,8 +627,20 @@ right toolbar
 	background-image: url('../images/black.png');
 }
 
-#table_select_fill #button_polkadot {
-	background-image: url('../images/polkadot.png');
+#table_select_fill #button_polkadot_05 {
+	background-image: url('../images/polkadot_05.png');
+}
+
+#table_select_fill #button_polkadot_08 {
+	background-image: url('../images/polkadot_08.png');
+}
+
+#table_select_fill #button_polkadot_4_05t {
+	background-image: url('../images/polkadot_4_05.png');
+}
+
+#table_select_fill #button_polkadot_4_08 {
+	background-image: url('../images/polkadot_4_08.png');
 }
 
 #table_select_fill #button_polkadot_water {
@@ -697,7 +712,7 @@ right toolbar
 	margin-left: 10px;
 	width: 12px;
 	/* height:735px; */
-	height: 500;
+	height: 490;
 	float: left;
 }
 
