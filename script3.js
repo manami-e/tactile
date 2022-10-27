@@ -15,26 +15,28 @@ form.myFile.addEventListener('change', function (e) {
     reader.addEventListener('load', function () {
 
         var f1 = reader.result;
-        var f3 = f1.replace(/path d=/g, '');
+        var f3 = f1.replace(/<path d=/g, '');
         var f4 = f3.replace(/"/g, '');
         var f5 = f4.replace(/,/g, ' ');
         var f9 = f5.replace(/=/g, ' = ');
-        var f10 = f9.replace(/stroke = black stroke-width = 0.5 fill = none /g, '');
-        var f6 = f10.split(/</); //<で分割
+        var f10 = f9.replace(/stroke = black stroke-width = 0.5 fill = none \/>/g, '');
+        var f11 = f10.replace(/\n/g, ' ');
+        var f7 = f11.replace(/mm/g, '');
+        var f6 = f7.split(/\s/); //<で分割
 
-        console.log(f6);
-        var f7 = f6[1].replace(/mm/g, '');
-        var f8 = f7.split(/\s/);
+        // console.log(f6);
 
-        console.log(f8[9]);
-        console.log(f8[12]);
-        console.log(f8);
+        // var f8 = f7.split(/\s/);
 
-        var num = f6.length - 7; //ヘッダー部分を除いた分割数=Mの出現回数
-        console.log(num);
+        // console.log(f6[9]);
+        // console.log(f6[12]);
+        // console.log(f8);
 
-        var size_width = Number(f8[9]);
-        var size_height = Number(f8[12]);
+        var num = f6.length; //ヘッダー部分を除いた分割数=Mの出現回数
+        // console.log(num);
+
+        var size_width = Number(f6[9]);
+        var size_height = Number(f6[12]);
         let reduce = 1;
 
         if ($('input[name="direction"]:checked').attr('id') === 'horizontal') { //横ボタン
@@ -72,29 +74,32 @@ form.myFile.addEventListener('change', function (e) {
             }
         }
 
-        console.log(width); //横
-        console.log(height); //縦
+        // console.log(width); //横
+        // console.log(height); //縦
 
         //指定した用紙サイズの中に画像が入るように、大きさを調整
-        if (size_width > size_height) { //元画像の横が縦よりも大きい場合
-            while (size_width >= width) { //元画像の横が指定サイズの横よりも大きい限り
-                size_width = Number(f8[9]);
-                reduce += 0.2;
-                size_width = size_width / reduce;
-                console.log(reduce);
-            }
-            var trans_x = size_width / 2;
-            var trans_y = size_height / reduce / 2;
-        } else { //元画像の縦が横よりも大きい場合
-            while (size_height >= height) { //元画像の縦が指定サイズの縦よりも大きい限り
-                seize_height = Number(f8[12]);
-                reduce += 0.2;
-                size_height = size_height / reduce;;
-                console.log(reduce);
-            }
-            var trans_x = size_width / 2;
-            var trans_y = size_height / reduce / 2;
-        }
+        // if (size_width > size_height) { //元画像の横が縦よりも大きい場合
+        //     while (size_width >= width) { //元画像の横が指定サイズの横よりも大きい限り
+        //         size_width = Number(f6[9]);
+        //         reduce += 0.2;
+        //         size_width = size_width / reduce;
+        //         // console.log(reduce);
+        //     }
+        //     var trans_x = size_width / 2;
+        //     var trans_y = size_height / reduce / 2;
+        // } else { //元画像の縦が横よりも大きい場合
+        //     while (size_height >= height) { //元画像の縦が指定サイズの縦よりも大きい限り
+        //         seize_height = Number(f6[12]);
+        //         reduce += 0.2;
+        //         size_height = size_height / reduce;;
+        //         // console.log(reduce);
+        //     }
+        //     var trans_x = size_width / 2;
+        //     var trans_y = size_height / reduce / 2;
+        // }
+
+        var trans_x = size_width / 2;
+        var trans_y = size_height / 2;
 
         console.log(trans_x);
         console.log(trans_y);
@@ -116,75 +121,79 @@ form.myFile.addEventListener('change', function (e) {
         var id_text = Array(num);
         id_text.fill(0);
 
-        // let k = 0;
+        var count = 0;
+        for (i = 0; i < num; i++) {
+            if (f6[i].indexOf('M') !== -1) {
+                count += 1;
+            }
+        }
 
-        // for (let i = 0; i < num; i++) {
-        //     id_text[k] = id_text1 + String(id_num) + id_text2;
-        //     // console.log(String(id_text[k]));
-        //     if (f7[i].indexOf('M') !== -1) {
-        //         ctmp = String(f7[i]) + ' ' + String(f7[i + 1] / reduce - trans_x) + ' ' + String(f7[i + 2] / reduce - trans_y);
-        //         // console.log(String(ctmp));
-        //         text2[k] = String(id_text[k]) + String(ctmp);
-        //         // console.log(String(text2[k]));
-        //         i += 3;
-        //         for (let j = i; j < num; j++) {
-        //             if (f7[j].indexOf('C') !== -1) {
-        //                 ctmp = String(f7[j]) + ' ' + String(f7[j + 1] / reduce - trans_x) + ' ' + String(f7[j + 2] / reduce - trans_y) + ' ' + String(f7[j + 3] / reduce - trans_x) + ' ' + String(f7[j + 4] / reduce - trans_y) + ' ' + String(f7[j + 5] / reduce - trans_x) + ' ' + String(f7[j + 6] / reduce - trans_y);
-        //                 // console.log(String(ctmp));
-        //                 text2[k] = String(text2[k]) + ' ' + String(ctmp);
-        //                 // console.log(String(text2[k]));
-        //                 j += 6;
-        //                 // console.log(f7[j]);
-        //             }
-        //             if (f7[j].indexOf('L') !== -1) {
-        //                 ctmp = String(f7[j]) + ' ' + String(f7[j + 1] / reduce - trans_x) + ' ' + String(f7[j + 2] / reduce - trans_y) + ' ' + String(f7[j + 3] / reduce - trans_x) + ' ' + String(f7[j + 4] / reduce - trans_y);
-        //                 // console.log(String(ctmp));
-        //                 text2[k] = String(text2[k]) + ' ' + String(ctmp);
-        //                 // console.log(String(text2[k]));
-        //                 j += 4;
-        //                 // console.log(f7[j]);
-        //             }
-        //             if (f7[j].indexOf('M') !== -1) {
-        //                 text2[k] = String(text2[k]) + ' ' + String(id_text3) + '\n';
-        //                 // console.log(String(text2[k]));
-        //                 id_num += 1;
-        //                 i = j - 1;
-        //                 k += 1;
-        //                 break;
-        //             }
-        //         }
-        //     }
-        // }
-        // console.log("BREAK!")
+        var text2 = Array(count);
+        text2.fill(0);
+        var ctmp = 0;
+        var id_text = Array(count);
+        id_text.fill(0);
 
-        // // console.log(String(text2));
+        let k = 0;
 
-        // var text3 = text + '\n' + String(text2) + ' ' + String(id_text3) + '\n' + '</svg>';
-        // var text4 = text3.replace(/,/g, '');
-        // // form.output.textContent = text4;
+        for (let i = 0; i < num; i++) {
+            id_text[k] = id_text1 + String(id_num) + id_text2;
+            // console.log(String(id_text[k]));
+            if (f6[i].indexOf('M') !== -1) {
+                ctmp = String(f6[i]) + ' ' + String(f6[i + 1] / reduce - trans_x) + ' ' + String(f6[i + 2] / reduce - trans_y);
+                // console.log(String(ctmp));
+                text2[k] = String(id_text[k]) + String(ctmp);
+                // console.log(String(text2[k]));
+                i += 3;
+                for (let j = i; j < num; j++) {
+                    if (f6[j].indexOf('L') !== -1) {
+                        ctmp = String(f6[j]) + ' ' + String(f6[j + 1] / reduce - trans_x) + ' ' + String(f6[j + 2] / reduce - trans_y);
+                        // console.log(String(ctmp));
+                        text2[k] = String(text2[k]) + ' ' + String(ctmp);
+                        // console.log(String(text2[k]));
+                        j += 3;
+                        // console.log(f6[j]);
+                    }
+                    if (f6[j].indexOf('M') !== -1) {
+                        text2[k] = String(text2[k]) + ' ' + String(id_text3) + '\n';
+                        // console.log(String(text2[k]));
+                        id_num += 1;
+                        i = j - 1;
+                        k += 1;
+                        break;
+                    }
+                }
+            }
+        }
+        console.log("BREAK!")
+        // console.log(String(text2));
 
-        // let str = text4;
-        // let ary = str.split(''); // 配列形式に変換（後述のBlobで全要素出力）
-        // let blob = new Blob(ary, { type: "text/plan" }); // テキスト形式でBlob定義
-        // let link = document.createElement('a'); // HTMLのaタグを作成
-        // link.href = URL.createObjectURL(blob); // aタグのhref属性を作成
-        // link.download = "svg" + (new Date()).toLocaleTimeString() + ".svg"; // aタグのdownload属性を作成
-        // link.click(); // 定義したaタグをクリック（実行）
+        var text3 = text + '\n' + String(text2) + ' ' + String(id_text3) + '\n' + '</svg>';
+        var text4 = text3.replace(/,/g, '');
+        // form.output.textContent = text4;
 
-        // text = 0;
-        // f1 = 0;
-        // f2 = 0;
-        // f3 = 0;
-        // f4 = 0;
-        // f5 = 0;
-        // f6 = 0;
-        // f7 = 0;
-        // f8 = 0;
-        // num = 0;
-        // trans_x = 0;
-        // trans_y = 0;
-        // text2.fill(0);
-        // id_text.fill(0);
-        // ctmp = 0;
+        let str = text4;
+        let ary = str.split(''); // 配列形式に変換（後述のBlobで全要素出力）
+        let blob = new Blob(ary, { type: "text/plan" }); // テキスト形式でBlob定義
+        let link = document.createElement('a'); // HTMLのaタグを作成
+        link.href = URL.createObjectURL(blob); // aタグのhref属性を作成
+        link.download = "svg" + (new Date()).toLocaleTimeString() + ".svg"; // aタグのdownload属性を作成
+        link.click(); // 定義したaタグをクリック（実行）
+
+        text = 0;
+        f1 = 0;
+        f2 = 0;
+        f3 = 0;
+        f4 = 0;
+        f5 = 0;
+        f6 = 0;
+        f7 = 0;
+        f8 = 0;
+        num = 0;
+        trans_x = 0;
+        trans_y = 0;
+        text2.fill(0);
+        id_text.fill(0);
+        ctmp = 0;
     })
 });
