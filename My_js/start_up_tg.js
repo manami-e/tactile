@@ -109,7 +109,7 @@ $(window).on('load', function () {
 
   //3.2 描画領域の初期設定
   // continue_setSVG('', -DRAW_AREA_WIDTH, -DRAW_AREA_HEIGHT, DRAW_AREA_WIDTH * 2, DRAW_AREA_HEIGHT * 2);
-  continue_setSVG('', -DRAW_AREA_WIDTH + 100, -DRAW_AREA_HEIGHT + 250, DRAW_AREA_WIDTH * 2, DRAW_AREA_HEIGHT * 2);
+  continue_setSVG('', -DRAW_AREA_WIDTH + 200, -DRAW_AREA_HEIGHT + 250, DRAW_AREA_WIDTH * 1.75, DRAW_AREA_HEIGHT * 1.75);
 
   // //3.3 描画領域の表示範囲を調整する左右スクロールスライダー(SVGで描画)の設定
   // let width_scrollbar = SVG('scrollbar_width').size(1040, 10).attr('id', 'width_scrollbar');
@@ -169,17 +169,17 @@ $(window).on('load', function () {
 
   //3.4 描画領域の表示範囲を指定する上下スクロールスライダー(SVGで描画)の設定
   //基本的にやることは左右するクロールバーと同じ（コメント省略）
-  let height_scrollbar = SVG('scrollbar_height').size(10, 490).attr('id', 'height_scrollbar');
-  height_scrollbar.rect(10, 490).stroke('#868686').fill('#ffffff');
+  let height_scrollbar = SVG('scrollbar_height').size(10, 580).attr('id', 'height_scrollbar');
+  height_scrollbar.rect(10, 580).stroke('#868686').fill('#ffffff');
   let height_handle = height_scrollbar.rect(10, 100).attr({
-    'y': 195,
+    'y': 240,
     'id': 'height_handle',
     'fill': '#868686',
     'cursor': 'pointer'
   })
-  height_handle.draggable({ minX: 0, minY: 0, maxX: 10, maxY: 490 });
+  height_handle.draggable({ minX: 0, minY: 0, maxX: 10, maxY: 580 });
   heightScrollBar_ratio = (4000 - draw.viewbox().height) / 635;
-  heightScrollBar_center = heightScrollBar_ratio * 195;
+  heightScrollBar_center = heightScrollBar_ratio * 240;
 
   height_handle.on('dragmove.namespace', function (event) {
     let viewbox = draw.viewbox();
@@ -373,6 +373,8 @@ $(window).on('load', function () {
   **************************************************/
   $("#button_fillnone , #button_gray , #button_diagonal").click(change_fill);
   $("#button_polkadot , #button_polkadot_water").click(change_fill);
+  $("#button_polkadot_05 , #button_polkadot_08").click(change_fill);
+  $("#button_polkadot_4_05 , #button_polkadot_4_08").click(change_fill);
   $("#button_verticalLine , #button_horizontalLine").click(change_fill);
   $("#button_dasheddoubleLine , #button_gridLine").click(change_fill);
   $("#button_stairLine , #button_diagonal_wide").click(change_fill);
