@@ -197,3 +197,7 @@ form.myFile.addEventListener('change', function (e) {
         ctmp = 0;
     })
 });
+
+function koshin() {
+    location.reload();
+}
