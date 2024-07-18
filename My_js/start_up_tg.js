@@ -334,7 +334,7 @@ $(window).on('load', function () {
   $("#radio_solid_path").prop('checked', true).change();//初期状態は実線にチェックを入れておく
   $('.dotted_option').hide(); //点線の設定情報は非表示に
 
-  $('#dottedLine_line').off('focusout').on('focusout', update_dottedLine);　//点線の実線部分の長さを指定するテキストボックスをフォーカスアウトしたときのイベント設定
+  $('#dottedLine_line').off('focusout').on('focusout', update_dottedLine); //点線の実線部分の長さを指定するテキストボックスをフォーカスアウトしたときのイベント設定
   $('#dottedLine_line').val(1);
 
   $('#dottedLine_space').off('focusout').on('focusout', update_dottedLine); //点線の空白部分の長さを指定するテキストボックスをフォーカスアウトしたときのイベント設定
@@ -382,6 +382,7 @@ $(window).on('load', function () {
   $("#custom_fill_color").on('change', function () {
     $("#button_custom").val($(this).val());
   });
+  $("#button_polkadot_1").click(change_fill);
 
   function change_fill() {
     let fill = this.id === 'custom_fill_color' ? $('#custom_fill_color').val() : $(this).val(); //カスタムの場合は、その色の値をfillに格納

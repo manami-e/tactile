@@ -32,6 +32,11 @@ function set_Stampmode() {
       if ($('input[name="stroke"]:checked').attr('id') === 'radio_dotted_path') $('.dotted_option').show();
       add_escalator();
       break;
+    case 'Triangle':
+      $('.stroke_option').show(); //線種変更
+      if ($('input[name="stroke"]:checked').attr('id') === 'radio_dotted_path') $('.dotted_option').show();
+      add_triangle();
+      break;
     case 'Arrow':
       $('.stroke_option').show(); //線種変更
       if ($('input[name="stroke"]:checked').attr('id') === 'radio_dotted_path') $('.dotted_option').show();
@@ -66,6 +71,11 @@ function set_Stampmode() {
       $('.stroke_option').show(); //線種変更
       if ($('input[name="stroke"]:checked').attr('id') === 'radio_dotted_path') $('.dotted_option').show();
       add_signal();
+      break;
+    case 'Cityhall':
+      $('.stroke_option').show(); //線種変更
+      if ($('input[name="stroke"]:checked').attr('id') === 'radio_dotted_path') $('.dotted_option').show();
+      add_cityhall();
       break;
     case 'Curve':
       $('.stroke_option').show(); //線種変更
@@ -119,7 +129,7 @@ function add_stair() {
 }
 
 /******************************************************
-//エレベータ記号を追加すする関数
+//エスカレーター記号を追加すする関数
 ******************************************************/
 function add_escalator() {
   let back_num = getPathCirclePos();
@@ -151,6 +161,42 @@ function add_escalator() {
       if (real_escalator) real_escalator.addClass('escalator').addClass('symbol').addClass('path');
       cash_svg(); //svgデータのcash
     }
+  })
+}
+
+/******************************************************
+//正三角形記号を追加すする関数
+******************************************************/
+function add_triangle() {
+  let back_num = getPathCirclePos();
+  let symbol_id;
+  draw.off('mousemove').mousemove(function (e) {
+    selector_delete('.dummy');
+    mx = getmousepoint('normal', e).x, my = getmousepoint('normal', e).y; //描画領域上でのマウスポイント計算
+    let dummy_triangle = draw.path().M({ x: mx, y: my - 45 * Math.sqrt(3) / 2 })
+      .L({ x: mx - 15, y: my - 15 * Math.sqrt(3) / 2 })
+      .L({ x: mx + 15, y: my - 15 * Math.sqrt(3) / 2 })
+      .Z();
+    symbol_id = dummy_triangle.attr('id');
+    dummy_triangle.addClass('dummy').back();
+
+    for (let i = 0; i < back_num; i++) dummy_triangle.forward();
+    dummy_triangle.attr({
+      'fill': 'none',
+      'stroke': $('#custom_stroke_color').val(),
+      'stroke-width': PS_WIDTH * $('#textbox_strokewidth').val(),
+      'stroke-linejoin': 'round'
+    })
+    if ($('input[name="stroke"]:checked').attr('id') === 'radio_dotted_path') {
+      dummy_triangle.attr({ 'stroke-dasharray': PS_WIDTH * $('#dottedLine_line').val() + ' ' + PS_WIDTH * $('#dottedLine_space').val() });
+    }
+  })
+  draw.off('mousedown').mousedown(function (e) {
+    if (e.button === 0) {
+      let real_triangle = SVG.get('#' + symbol_id).removeClass('dummy');
+      if (real_triangle) real_triangle.addClass('connected').addClass('symbol').addClass('path');
+    }
+    cash_svg(); //svgデータのcash
   })
 }
 
@@ -232,7 +278,7 @@ function add_Tiket_gate() {
     if (e.button === 0) {
       for (let i = 0; i < symbol_id.length; i++) {
         let real_tiket_gate = SVG.get('#' + symbol_id[i]).removeClass('dummy');
-        if (real_tiket_gate) real_tiket_gate.addClass('connected').addClass('path');
+        if (real_tiket_gate) real_tiket_gate.addClass('connected').addClass('symbol').addClass('path');
       }
       cash_svg(); //svgデータのcash
     }
@@ -317,7 +363,7 @@ function add_station() {
     if (e.button === 0) {
       for (let i = 0; i < symbol_id.length; i++) {
         let real_station = SVG.get('#' + symbol_id[i]).removeClass('dummy');
-        if (real_station) real_station.addClass('connected').addClass('path');
+        if (real_station) real_station.addClass('connected').addClass('symbol').addClass('path');
       }
       cash_svg(); //svgデータのcash
     }
@@ -361,7 +407,7 @@ function add_bridge() {
     if (e.button === 0) {
       for (let i = 0; i < symbol_id.length; i++) {
         let real_bridge = SVG.get('#' + symbol_id[i]).removeClass('dummy');
-        if (real_bridge) real_bridge.addClass('connected').addClass('path');
+        if (real_bridge) real_bridge.addClass('connected').addClass('symbol').addClass('path');
       }
       cash_svg(); //svgデータのcash
     }
@@ -420,6 +466,90 @@ function add_signal() {
         //   }
         // })
       }
+      cash_svg(); //svgデータのcash
+    })
+  }
+  )
+}
+
+/***********************************************************
+//市役所を追加する関数
+************************************************************/
+function add_cityhall() {
+  //変数の指定　draw_rect()で説明したのと役割は同じ
+  let sx = 0, sy = 0;
+  let lx = 0, ly = 0;
+  let signal;
+  let back_num = getPathCirclePos();
+  let symbol_id = new Array();
+  draw.off('mousemove').mousemove(function (e) {
+    selector_delete('.dummy');
+    mx = getmousepoint('normal', e).x
+    my = getmousepoint('normal', e).y; //描画領域上でのマウスポイント計算
+    let back_num = getPathCirclePos();
+    let dummy_cityhall1 = draw.circle(0).attr({
+      'cx': mx,
+      'cy': my,
+      'fill': 'none',
+      'stroke': 'black',
+      'stroke-width': PS_WIDTH * $('#textbox_strokewidth').val(),
+    })
+    dummy_cityhall1.attr({ 'r': '15' });
+    dummy_cityhall1.addClass('dummy').back();
+    let dummy_cityhall2 = draw.circle(0).attr({
+      'cx': mx,
+      'cy': my,
+      'fill': 'none',
+      'stroke': 'black',
+      'stroke-width': PS_WIDTH * $('#textbox_strokewidth').val(),
+    })
+    dummy_cityhall2.attr({ 'r': '5' });
+    dummy_cityhall2.addClass('dummy').back();
+    symbol_id[0] = dummy_cityhall1.attr('id');
+    symbol_id[1] = dummy_cityhall2.attr('id');
+    for (let i = 0; i < back_num; i++) {
+      dummy_cityhall1.forward();
+      dummy_cityhall2.forward();
+    }
+    // if ($('input[name="stroke"]:checked').attr('id') === 'radio_dotted_path') {
+    //   dummy_signal.attr({ 'stroke-dasharray': PS_WIDTH * $('#dottedLine_line').val() + ' ' + PS_WIDTH * $('#dottedLine_space').val() });
+    // }
+
+    draw.off('mousedown').mousedown(function (e) {
+      if (e.button === 0) {
+        sx = getmousepoint('normal', e).x, sy = getmousepoint('normal', e).y; //描画領域上でのマウスポイント計算
+        let back_num = getPathCirclePos();
+        let cityhall1 = draw.circle(0).attr({
+          'cx': sx,
+          'cy': sy,
+          'fill': 'none',
+          'stroke': 'black',
+          'stroke-width': PS_WIDTH * $('#textbox_strokewidth').val(),
+        })
+        cityhall1.addClass('circle').back();
+        let cityhall2 = draw.circle(0).attr({
+          'cx': sx,
+          'cy': sy,
+          'fill': 'none',
+          'stroke': 'black',
+          'stroke-width': PS_WIDTH * $('#textbox_strokewidth').val(),
+        })
+        cityhall2.addClass('circle').back();
+        for (let i = 0; i < back_num; i++) {
+          cityhall1.forward();
+          cityhall2.forward();
+        }
+        cityhall1.attr({ 'r': '15' });
+        cityhall2.attr({ 'r': '5' });
+
+        // draw.off('mouseup').on('mouseup', function (e) {
+        //   if (e.button === 0) {
+        //     circle.attr('r') > 0.3 * SVG_RATIO ? cash_svg() : circle.remove()
+        //     draw.off('mousemove');
+        //   }
+        // })
+      }
+      cash_svg(); //svgデータのcash
     })
   }
   )

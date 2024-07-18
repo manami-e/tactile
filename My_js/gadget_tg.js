@@ -51,6 +51,8 @@ function RadioEvent_set(unredo_flag) {
   $('#table_draw_fill').hide();
   //レイヤ変更
   $('#table_layer').hide();
+  //整列機能
+  $('#table_seiretsu').hide();
   //選択状態の塗りつぶし変更
   $('#table_select_fill').hide();
   //スタンプの選択
@@ -458,6 +460,36 @@ function update_dottedLine() {
     }
   }
 }
+
+/*****************************************************************
+点線の幅のテキストボックスの内容に合わせて点線の情報を変化させる関数
+******************************************************************/
+// function update_polkadot() {
+//   if (String($('#polkadot_radius').val()) !== "") {
+//     let transNumber = leaveOnlyNumber($('#polkadot_radius').val());
+//     console.log(transNumber);
+//     $('#polkadot_radius').val(transNumber);
+//     if (!transNumber.match(/[^0-9\.]/)) {
+// let drawing_path_selector = (now_drawing_path_ID === '' || now_drawing_path_ID === undefined) ? '' : ',#' + now_drawing_path_ID;
+// draw.select('.edit_select.path , .edit_select.circle , .segmented' + drawing_path_selector).each(function (i, children) {
+//   if (this.attr('stroke-dasharray') !== undefined && this.attr('stroke-dasharray') !== '') {
+//     this.attr({ 'stroke-dasharray': PS_WIDTH * $('#dottedLine_line').val() + ' ' + PS_WIDTH * $('#dottedLine_space').val() });
+//   }
+//       let polkadot_pattern_08 = draw.pattern(2 * SVG_RATIO, 2 * SVG_RATIO, function (add) {
+//         add.circle(0.8 * SVG_RATIO).attr({
+//           'cx': 1 * SVG_RATIO,
+//           'cy': 1 * SVG_RATIO,
+//           'fill': '#000'
+//         })
+//       })
+//       polkadot_pattern_08.attr({
+//         'id': 'polkadot-texture_08'
+//       }).addClass('pattern')
+//       })
+//       cash_svg();
+//     }
+//   }
+// }
 
 /*****************************************************************
 線幅変更用のテキストボックスに値が入力されて決定されたときに実行する関数
@@ -892,6 +924,7 @@ function defs_set() {
   polkadot_pattern_05.attr({
     'id': 'polkadot-texture_05'
   }).addClass('pattern')
+  // console.log(polkadot_pattern_05);
 
   let polkadot_pattern_08 = draw.pattern(2 * SVG_RATIO, 2 * SVG_RATIO, function (add) {
     // add.rect(2 * SVG_RATIO, 2 * SVG_RATIO).attr({
@@ -1058,6 +1091,42 @@ function defs_set() {
   stairLine_pattern.attr({
     'id': 'stairLine-texture'
   }).addClass('pattern')
+
+  function dot_button_click() {
+    if (kyori.value === "" || chokkei.value === "") {
+      alert("データを入力してください");
+    } else {
+      console.log(kyori.value);
+      console.log(chokkei.value);
+      // kyori.value = 2;
+      // chokkei.value = 2;
+      // let polkadot_pattern_1 = 0;
+      polkadot_pattern_1 = draw.pattern(kyori.value * SVG_RATIO, kyori.value * SVG_RATIO, function (add) {
+        // add.rect(kyori.value * SVG_RATIO, kyori.value * SVG_RATIO).attr({
+        //   'fill': '#fff'
+        // })
+        // add.circle(chokkei.value * SVG_RATIO).attr({
+        //   'cx': 1 * SVG_RATIO,
+        //   'cy': 1 * SVG_RATIO,
+        //   'fill': '#000'
+        // })
+        add.circle(chokkei.value * SVG_RATIO).attr({
+          'cx': 1 * SVG_RATIO,
+          'cy': 1 * SVG_RATIO,
+          'fill': '#000'
+        })
+      })
+      polkadot_pattern_1.attr({
+        'id': 'polkadot-texture_1'
+      }).addClass('pattern')
+      console.log(polkadot_pattern_1);
+    }
+  }
+  let kyori = document.getElementById('dot_kyori');
+  let chokkei = document.getElementById('dot_chokkei');
+  let dot_button = document.getElementById('button_polkadot_1');
+  dot_button.addEventListener('click', dot_button_click);
+  // dot_button_click();
 
 }
 

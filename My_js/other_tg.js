@@ -49,6 +49,7 @@ function set_key_down_up() {
           if (current_mode === 'Edit' || current_mode === "EditImage") {
             draw.select('.edit_select').each(function (i, children) {
               if (this.hasClass('image')) {
+                console.log(this.transform('matrix'));
                 let matrix = this.transform('matrix');
                 let new_matrix_e = Number(matrix.e), new_matrix_f = Number(matrix.f);
                 if (e.keyCode === 37) new_matrix_e = new_matrix_e - CURSOR_KEY_MOVE;
@@ -72,9 +73,10 @@ function set_key_down_up() {
                 if (e.keyCode === 40) this.dy(CURSOR_KEY_MOVE);
               }
             })
-            SVG.get('handle_group').each(function (i, children) {
+            SVG.get('handle_group').each(function (i, children) { //四角形
               if (this.id() === 'box_resize') {
                 let dpoint = this.clear().array().settle(); //pathのdpoint配列を取得
+                console.log(dpoint);
                 let d = "";
                 for (let j = 0; j < dpoint.length; j++) {
                   if (dpoint[j][0] !== "Z") {  //属性がZ以外の場合
@@ -98,7 +100,7 @@ function set_key_down_up() {
             })
           } else if (current_mode === 'EditPath') {
             draw.select('.editing_target').each(function (i, children) {
-              if (this.hasClass('edit_rect')) {
+              if (this.hasClass('edit_rect')) { //円
                 let original_cx = this.attr('x') + this.width() / 2, original_cy = this.attr('y') + this.height() / 2; //クリックを行った点
                 let cx = 0, cy = 0;
                 if (e.keyCode === 37) cx = original_cx - CURSOR_KEY_MOVE, cy = original_cy;

@@ -205,6 +205,7 @@ function svgDownload() {
   if (window.navigator.msSaveBlob) {
     window.navigator.msSaveOrOpenBlob(blob, file_name);
   } else {
+    // document.getElementById('svg_download').download = file_name;
     document.getElementById('svg_download').download = file_name;
     document.getElementById('svg_download').href = window.URL.createObjectURL(blob);
   }
