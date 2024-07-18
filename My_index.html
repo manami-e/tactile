@@ -43,6 +43,12 @@
     <link href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet"
         integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous" />
 
+    <script type="text/javascript">
+        window.onbeforeunload = function (e) {
+            e.returnValue = "本当にページを閉じますか？";
+        }
+    </script>
+
     <div class="application_area">
 
         <div class="textbox_area">
@@ -99,11 +105,11 @@
                         </a>
                     </li>
                     <li>
-                        <a herf="https://manami-e.github.io/tactilemap_ME/svg_conversion.html"
+                        <a href="https://manami-e.github.io/tactilemap_ME/svg_conversion.html"
                             target="_blank">SVGファイル変換ツール</a>
                     </li>
                     <li>
-                        <a herf="https://manami-e.github.io/tactilemap_ME/pngtosvg.html"
+                        <a href="https://manami-e.github.io/tactilemap_ME/pngtosvg.html"
                             target="_blank">PNG/JPEG→SVG変換ツール</a>
                     </li>
 
@@ -164,7 +170,9 @@
                             <li class="active"><a href="#section_draw">描画</a></li>
                             <li><a href="#section_stamp">記号のスタンプ</a></li>
                             <li><a href="#section_braille">点字・墨字</a></li>
+                            <li><a href="#section_layer">配置</a></li>
                             <li><a href="#section_setting">設定</a></li>
+
                             <!-- <li><a href="#section_layer">レイヤー</a></li> -->
                         </ul>
 
@@ -494,8 +502,55 @@
                                             </p>
                                         </div>
                                     </div>
+
+                                    <div class="large-tooltip">
+                                        <button class="ribbon-button">
+                                            <span class="icon">
+                                                <input type="radio" name="tactileSymbol" value="Cityhall" id="Cityhall">
+                                                <label for="Cityhall">
+                                                    <svg xmlns="http://www.w3.org/2000/svg" width="200" height="100"
+                                                        viewBox="0 0 200 100" style="background-color:none">
+                                                        <circle cx="100" cy="50" r="80"
+                                                            style="fill:none;stroke:#000;stroke-width:5" />
+                                                        <circle cx="100" cy="50" r="30"
+                                                            style="fill:none;stroke:#000;stroke-width:5" />
+                                                    </svg>
+                                                </label>
+                                            </span>
+                                        </button>
+                                        <div class="box">
+                                            <p class="text">市役所
+                                            <p class="text1">市役所のスタンプを追加します</p>
+                                            </p>
+                                        </div>
+                                    </div>
+
+                                    <div class="large-tooltip">
+                                        <button class="ribbon-button">
+                                            <span class="icon">
+                                                <input type="radio" name="tactileSymbol" value="Triangle" id="Triangle">
+                                                <label for="Triangle">
+                                                    <svg xmlns="http://www.w3.org/2000/svg" width="200" height="100"
+                                                        viewBox="0 0 150 100" style="background-color:none">
+                                                        <line x1="0" y1="70" x2="100" y2="70"
+                                                            style="stroke:#000;stroke-width:7" />
+                                                        <line x1="100" y1="70" x2="50" y2="10"
+                                                            style="stroke:#000;stroke-width:7" />
+                                                        <line x1="50" y1="10" x2="0" y2="70"
+                                                            style="stroke:#000;stroke-width:7" />
+                                                    </svg>
+                                                </label>
+                                            </span>
+                                        </button>
+                                        <div class="box">
+                                            <p class="text">正三角形
+                                            <p class="text1">正三角形のスタンプを追加します</p>
+                                            </p>
+                                        </div>
+                                    </div>
                                     <span class="title">記号のスタンプ</span>
                                 </div>
+
                                 <div class="group">
                                     <button class="ribbon-button">
                                         幅：<input type="text" id="textbox_selectBox_width" value="" oncopy="return false"
@@ -742,6 +797,153 @@
                                 </div>
                             </div>
 
+                            <!-- レイヤー・整列 -->
+                            <div class="section" id="section_layer">
+                                <div class="group">
+                                    <div class="c-tooltip">
+                                        <button class="ribbon-button" id="button_front">
+                                            <span class="icon">
+                                                <img src="./images/layer_front.png">
+                                            </span>
+                                        </button>
+                                        <div class="box">
+                                            <p class="text">最前面
+                                            <p class="text1">最前面のレイヤーに移動します</p>
+                                            </p>
+                                        </div>
+                                    </div>
+                                    <div class="c-tooltip">
+                                        <button class="ribbon-button" id="button_forward">
+                                            <span class="icon">
+                                                <img src="./images/layer_forward.png">
+                                            </span>
+                                        </button>
+                                        <div class="box">
+                                            <p class="text">前面
+                                            <p class="text1">前面のレイヤーに移動します</p>
+                                            </p>
+                                        </div>
+                                    </div>
+                                    <div class="c-tooltip">
+                                        <button class="ribbon-button" id="button_backward">
+                                            <span class="icon">
+                                                <img src="./images/layer_backword.png">
+                                            </span>
+                                        </button>
+                                        <div class="box">
+                                            <p class="text">背面
+                                            <p class="text1">背面のレイヤーに移動します</p>
+                                            </p>
+                                        </div>
+                                    </div>
+                                    <div class="c-tooltip">
+                                        <button class="ribbon-button" id="button_back">
+                                            <span class="icon">
+                                                <img src="./images/layer_back.png">
+                                            </span>
+                                        </button>
+                                        <div class="box">
+                                            <p class="text">最背面
+                                            <p class="text1">最背面のレイヤーに移動します</p>
+                                            </p>
+                                        </div>
+                                    </div>
+                                    <span class="title">レイヤーの変更</span>
+                                </div>
+                                <div class="group">
+                                    <div class="c-tooltip">
+                                        <button class="ribbon-button" id="button_left">
+                                            <span class="icon">
+                                                <img src="./images/left.png">
+                                            </span>
+                                        </button>
+                                        <div class="box">
+                                            <p class="text">左揃え
+                                            <p class="text1">オブジェクトを左揃えします</p>
+                                            </p>
+                                        </div>
+                                    </div>
+                                    <div class="c-tooltip">
+                                        <button class="ribbon-button" id="button_right">
+                                            <span class="icon">
+                                                <img src="./images/right.png">
+                                            </span>
+                                        </button>
+                                        <div class="box">
+                                            <p class="text">右揃え
+                                            <p class="text1">オブジェクトを右揃えします</p>
+                                            </p>
+                                        </div>
+                                    </div>
+                                    <div class="c-tooltip">
+                                        <button class="ribbon-button" id="button_up">
+                                            <span class="icon">
+                                                <img src="./images/up.png">
+                                            </span>
+                                        </button>
+                                        <div class="box">
+                                            <p class="text">上揃え
+                                            <p class="text1">オブジェクトを上揃えします</p>
+                                            </p>
+                                        </div>
+                                    </div>
+                                    <div class="c-tooltip">
+                                        <button class="ribbon-button" id="button_down">
+                                            <span class="icon">
+                                                <img src="./images/down.png">
+                                            </span>
+                                        </button>
+                                        <div class="box">
+                                            <p class="text">下揃え
+                                            <p class="text1">オブジェクトを下揃えします</p>
+                                            </p>
+                                        </div>
+                                    </div>
+                                    <div class="c-tooltip">
+                                        <button class="ribbon-button" id="button_Xsentor">
+                                            <span class="icon">
+                                                <img src="./images/Xsentor.png">
+                                            </span>
+                                        </button>
+                                        <div class="box">
+                                            <p class="text">左右中央揃え
+                                            <p class="text1">オブジェクトを左右中央揃えします</p>
+                                            </p>
+                                        </div>
+                                    </div>
+                                    <div class="c-tooltip">
+                                        <button class="ribbon-button" id="button_Ysentor">
+                                            <span class="icon">
+                                                <img src="./images/Ysentor.png">
+                                            </span>
+                                        </button>
+                                        <div class="box">
+                                            <p class="text">上下中央揃え
+                                            <p class="text1">オブジェクトを上下中央揃えします</p>
+                                            </p>
+                                        </div>
+                                    </div>
+                                    <span class="title">整列</span>
+                                </div>
+                                <div class="group">
+                                    <button class="ribbon-button">
+                                        幅：<input type="text" id="textbox_selectBox_width" value="" oncopy="return false"
+                                            onpaste="return false" oncontextmenu="return false" maxlength="6"
+                                            style="width:80px;">mm
+                                    </button>
+                                    <button class="ribbon-button">
+                                        高さ：<input type="text" id="textbox_selectBox_height" value=""
+                                            oncopy="return false" onpaste="return false" oncontextmenu="return false"
+                                            maxlength="6" style="width:80px;">mm
+                                    </button>
+                                    <button class="ribbon-button">
+                                        <input type="checkbox" id="check_aspect" name="checkers" value="check_aspect"
+                                            checked />
+                                        <label for="check_aspect" class="custom_check_label">縦横比固定</label>
+                                    </button>
+                                    <span class="title">幅・高さ</span>
+                                </div>
+                            </div>
                             <!-- <div class="section" id="section_layer">
 
                             </div> -->
@@ -865,9 +1067,29 @@
                             <td colspan="2"><button id="button_stairLine" value='url(#stairLine-texture)'></button></td>
                             <td colspan="2"><button id="button_gray" value='#333'></button></td>
                         </tr>
+                        <tr>
+                            <th colspan="4" align="center">ドット模様</th>
+                        </tr>
+                        <tr>
+                            <td colspan="2">中心間距離
+                                <br>
+                                <input type="text" id="dot_kyori" style="width: 50px" oncopy="return false"
+                                    onpaste="return false" oncontextmenu="return false">mm
+                            </td>
+                            <td colspan="2">直径
+                                <br>
+                                <input type="text" id="dot_chokkei" style="width: 50px" oncopy="return false"
+                                    onpaste="return false" oncontextmenu="return false">mm
+                            </td>
+                        <tr>
+                            <td colspan="2">
+                                <button id="button_polkadot_1" value='url(#polkadot-texture_1)'></button>
+                            </td>
+                        </tr>
+
                     </table>
 
-                    <table id="table_layer">
+                    <!-- <table id="table_layer">
                         <tr>
                             <th colspan="2">レイヤー</th>
                         </tr>
@@ -879,7 +1101,21 @@
                             <td><button id="button_backward"></button></td>
                             <td><button id="button_back"></button></td>
                         </tr>
-                    </table>
+                    </table> -->
+
+                    <!-- <table id="table_seiretsu">
+                        <tr>
+                            <th colspan="2">整列</th>
+                        </tr>
+                        <tr>
+                            <td><button id="button_right"></button></td>
+                            <td><button id="button_left"></button></td>
+                        </tr>
+                        <tr>
+                            <td><button id="button_up"></button></td>
+                            <td><button id="button_down"></button></td>
+                        </tr>
+                    </table> -->
 
                     <!--線、四角形、円の描画で使う塗りつぶし変更ガジェット-->
                     <table id="table_draw_fill">
@@ -976,6 +1212,31 @@
                                 <label for="draw_fill_gray"></label>
                             </td>
                         </tr>
+                        <tr class="table_draw_fill">
+                            <th colspan="4" align="center">ドット模様の作成</th>
+                        </tr>
+                        <tr class="table_draw_fill">
+                            <td colspan="2">中心間距離
+                                <br>
+                                <input type="text" id="dot_kyori" style="width: 50px" oncopy="return false"
+                                    onpaste="return false" oncontextmenu="return false">mm
+                            </td>
+                            <td colspan="2">直径
+                                <br>
+                                <input type="text" id="dot_chokkei" style="width: 50px" oncopy="return false"
+                                    onpaste="return false" oncontextmenu="return false">mm
+                            </td>
+                        <tr class="table_draw_fill">
+                            <td colspan="4">値を入力したらクリック
+                                <input type="radio" id="draw_fill_polkadot_1" name="draw_path_fillRadio"
+                                    value="url(#polkadot-texture_1)" />
+                                <label for="draw_fill_polkadot_1"></label>
+                            </td>
+                            <!-- <td colspan="2">
+                                <button id="button_polkadot_1" value='url(#polkadot-texture_1)'></button>
+                            </td> -->
+                        </tr>
+                        </tr>
                     </table>
                 </div>
                 <!-- <div id="scrollbar_width"></div> -->
@@ -989,7 +1250,7 @@
     <!-- 改変毛利さんjsファイルのインポート -->
     <script type="text/javascript" src="./My_js/draw_tg.js"></script>
     <!--ペン機能関係-->
-    <script type="text/javascript" src="./My_js/edit_tg.js"></script>
+    <script type="text/javascript" src="./My_js/edit_tg copy.js"></script>
     <!--要素操作機能関係-->
     <script type="text/javascript" src="./My_js/editpath_tg.js"></script>
     <!--線の詳細編集機能関係-->
